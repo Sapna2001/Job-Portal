@@ -1,16 +1,20 @@
 import { Layout, Menu } from "antd";
 import React from "react";
 import "../stylesheets/defaultLayout.css"
-
+import { Link } from 'react-router-dom';
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
+  PlusSquareOutlined,
+  HomeOutlined,
   UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined
+  PlusOutlined,
+  CheckOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 
 const { Header, Sider, Content } = Layout;
+
 
 class DefaultLayout extends React.Component {
   constructor(props) {
@@ -43,28 +47,30 @@ class DefaultLayout extends React.Component {
           <div className="logo">
             {this.state.collapsed ? <h1>JP</h1> : <h1>Job Portal</h1>}
           </div>
-          <Menu
-            theme="dark"
-            mode="inline"
-            defaultSelectedKeys={["1"]}
-            items={[
-              {
-                key: "1",
-                icon: <UserOutlined />,
-                label: "nav 1",
-              },
-              {
-                key: "2",
-                icon: <VideoCameraOutlined />,
-                label: "nav 2",
-              },
-              {
-                key: "3",
-                icon: <UploadOutlined />,
-                label: "nav 3",
-              },
-            ]}
-          />
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={[window.location.pathname]}>
+            <Menu.Item key="/" icon={<HomeOutlined />}>
+              <Link to='/'>Home</Link>
+            </Menu.Item>
+            <Menu.Item key="/profile" icon={<UserOutlined />}>
+            <Link to='/profile'>Profile</Link>
+            </Menu.Item>
+            <Menu.Item key="/appliedjobs" icon={<PlusSquareOutlined />}>
+            <Link to='/appliedjobs'>Applied Jobs</Link>
+            </Menu.Item>
+
+            <Menu.Item key="/postjob" icon={<PlusOutlined />}>
+            <Link to='/postjob'>Post Job</Link>
+            </Menu.Item>
+
+            <Menu.Item key="/posted" icon={<CheckOutlined />}>
+            <Link to='/posted'>Posted</Link>
+            </Menu.Item>
+
+            <Menu.Item key="/logout" icon={<LogoutOutlined />}>
+            <Link onClick={this.logout}>Logout</Link>
+            </Menu.Item>
+          </Menu>
+          
         </Sider>
         <Layout className="site-layout">
           <Header

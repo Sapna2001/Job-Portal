@@ -15,7 +15,18 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   return (
     <>
-      <Home />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/appliedjobs" element={<AppliedJobs />} />
+          <Route path="/postjob" element={<PostJob />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/jobs/:id" element={<JobInfo />} />
+          <Route path="/posted" element={<PostedJobs />} />
+          <Route path="/editjob/:id" element={<EditJob />} />
+          <Route path="/users/:id" element={<UserInfo />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

@@ -5,6 +5,9 @@ app.use(express.json());
 const dbConnect = require("./dbConnect");
 const port = process.env.PORT || 5000;
 const path = require("path");
+const jobsRoute = require("./routes/jobsRoute");
+
+app.use('/api/jobs/' , jobsRoute)
 
 if (process.env.NODE_ENV === "production") {
   app.use("/", express.static("client/build"));

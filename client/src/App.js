@@ -10,6 +10,9 @@ import EditJob from "./Pages/EditJob";
 import PostJob from "./Pages/PostJob";
 import UserInfo from "./Pages/UserInfo";
 import Register from "./Pages/Register";
+import Referral from "./Pages/Referral";
+import Resume from "./Pages/Resume";
+import Company from "./Pages/Company";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -25,6 +28,9 @@ function App() {
           <Route path="/posted" element={<PostedJobs />} />
           <Route path="/editjob/:id" element={<EditJob />} />
           <Route path="/users/:id" element={<UserInfo />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="/referral" element={<Referral />} />
+          <Route path="/company" element={<Company/>} />
         </Routes>
       </BrowserRouter>
     </>

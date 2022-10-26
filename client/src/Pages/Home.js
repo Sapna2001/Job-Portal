@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import DefaultLayout from "../Components/DefaultLayout";
 import { getAllJobs } from "../redux/actions/jobsActions";
-import { Row, Col , Button } from "antd";
+import { Row, Col, Button } from "antd";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import "../stylesheets/home.css"
 
 function Home() {
   const { jobs } = useSelector((state) => state.jobsReducer);
@@ -20,21 +21,21 @@ function Home() {
           {jobs.map((job) => {
             return (
               <Col lg={12} sm={24}>
-                <div className="job-div bs m-2 p-2">
-                  <h4>{job.title}</h4>
+                <div className="job-div box-shadow m-2 p-2">
+                  <h3><b>{job.title}</b></h3>
                   <p>{job.company}</p>
                   <hr />
-                  <p>{job.smallDescription}</p>
+                  <p>{job.description}</p>
                   <div className="flex">
                     <p>
-                      Salary :{" "}
+                      Salary :
                       <b>
+                        {" "}
                         {job.salaryFrom} - {job.salaryTo}
-                      </b>{" "}
-                      ,{" "}
+                      </b>
                     </p>
-                    <p style={{ marginLeft: 20 }}>
-                      Experience : <b>{job.experience} Years</b>{" "}
+                    <p>
+                      Experience : <b>{job.experience} Years</b>
                     </p>
                   </div>
                   <hr />

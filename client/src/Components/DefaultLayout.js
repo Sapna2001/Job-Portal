@@ -95,7 +95,6 @@ class DefaultLayout extends React.Component {
             style={{
               padding: 0,
               position: "sticky",
-              overflow: "auto",
               top: 0,
               zIndex: 9999,
             }}

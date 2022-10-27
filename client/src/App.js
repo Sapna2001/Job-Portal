@@ -17,7 +17,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllJobs } from "./redux/actions/jobsActions";
-import { css } from "@emotion/react";
 import RingLoader from "react-spinners/RingLoader";
 
 function App() {

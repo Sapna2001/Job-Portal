@@ -9,11 +9,6 @@ import "../stylesheets/home.css"
 
 function Home() {
   const { jobs } = useSelector((state) => state.jobsReducer);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllJobs());
-  }, []);
-
   return (
     <div>
       <DefaultLayout>

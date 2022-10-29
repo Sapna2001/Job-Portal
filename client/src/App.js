@@ -46,6 +46,8 @@ function App() {
             <Route path="/resume" element={<Resume />} />
             <Route path="/referral" element={<Referral />} />
             <Route path="/company" element={<Company />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </BrowserRouter>
       </div>

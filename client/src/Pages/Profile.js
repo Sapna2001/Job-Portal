@@ -8,7 +8,6 @@ const { TextArea } = Input;
 
 function Profile() {
   const [personalInfo, setPersonalInfo] = useState();
-  const [activeTab, setActiveTab] = useState("1");
   const dispatch = useDispatch();
 
   function onPersonInfoSubmit(values) {

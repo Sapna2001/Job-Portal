@@ -10,7 +10,6 @@ function JobInfo() {
   console.log(id);
   const job = jobs.find((job) => job._id === id);
 
-
   return (
     <div>
       <DefaultLayout>
@@ -25,9 +24,6 @@ function JobInfo() {
 
             <p>
               <b>Description</b> : {job.description}
-            </p>
-            <p>
-              <b>Title</b> : {job.title}
             </p>
             <p>
               <b>Skills Required</b> : {job.skillsRequired}

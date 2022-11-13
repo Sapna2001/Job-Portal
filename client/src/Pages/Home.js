@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import DefaultLayout from "../Components/DefaultLayout";
-import { getAllJobs } from "../redux/actions/jobActions";
 import { Row, Col, Button } from "antd";
 import { Link } from "react-router-dom";
 import moment from "moment";

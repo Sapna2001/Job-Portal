@@ -13,7 +13,7 @@ import Register from "./Pages/Register";
 import Referral from "./Pages/Referral";
 import Resume from "./Pages/Resume";
 import Company from "./Pages/Company";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllJobs } from "./redux/actions/jobActions";
@@ -35,17 +35,19 @@ function App() {
         )}
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/appliedjobs" element={<AppliedJobs />} />
-            <Route path="/postjob" element={<PostJob />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/jobs/:id" element={<JobInfo />} />
-            <Route path="/posted" element={<PostedJobs />} />
-            <Route path="/editjob/:id" element={<EditJob />} />
-            <Route path="/users/:id" element={<UserInfo />} />
-            <Route path="/resume" element={<Resume />} />
-            <Route path="/referral" element={<Referral />} />
-            <Route path="/company" element={<Company />} />
+            <Route element = {<ProtectedRoute />}>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/appliedjobs" element={<AppliedJobs />} />
+                        <Route path="/postjob" element={<PostJob />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/jobs/:id" element={<JobInfo />} />
+                        <Route path="/posted" element={<PostedJobs />} />
+                        <Route path="/editjob/:id" element={<EditJob />} />
+                        <Route path="/users/:id" element={<UserInfo />} />
+                        <Route path="/resume" element={<Resume />} />
+                        <Route path="/referral" element={<Referral />} />
+                        <Route path="/company" element={<Company />} />
+            </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>
@@ -56,3 +58,13 @@ function App() {
 }
 
 export default App;
+
+export function ProtectedRoute(props) {
+  const user = localStorage.getItem("user");
+
+  if (!user) {
+    return <Navigate to="/login" />;
+  } else {
+   return <Outlet {...props} />;
+  }
+}

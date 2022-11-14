@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DefaultLayout from "../Components/DefaultLayout";
-import { Row, Col, Form, Tabs, Input, Button, Select } from "antd";
+import { Row, Col, Form, Tabs, Input, Button, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { editJob } from "../redux/actions/jobActions";
 import { useParams } from 'react-router-dom'
@@ -17,6 +17,7 @@ function EditJob() {
 
   function onFirstFormFinish(values) {
     setJobInfo(values);
+    message.info('Saved');
   }
 
   function onFinalFormFinish(values) {
@@ -124,7 +125,7 @@ function EditJob() {
                 </Col>
               </Row>
 
-              <Button htmlType="submit">Update</Button>
+              <Button htmlType="submit">Save</Button>
                 </Form>
               ),
             },

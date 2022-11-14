@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DefaultLayout from "../Components/DefaultLayout";
-import { Row, Col, Form, Tabs, Input, Button } from "antd";
+import { Row, Col, Form, Tabs, Input, Button, message } from "antd";
 import { useDispatch } from "react-redux";
 import { postJob } from "../redux/actions/jobActions";
 
@@ -11,6 +11,7 @@ function PostJob() {
   const dispatch = useDispatch()
   function onFirstFormFinish(values) {
     setJobInfo(values);
+    message.info('Saved');
   }
 
   function onFinalFormFinish(values) {
@@ -113,7 +114,7 @@ function PostJob() {
                 </Col>
               </Row>
 
-              <Button htmlType="submit">Update</Button>
+              <Button htmlType="submit">Save</Button>
             </Form>
               ),
             },

@@ -1,10 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import DefaultLayout from "../Components/DefaultLayout";
 import { Button , Tag} from "antd";
 import moment from "moment";
 import { useParams } from 'react-router-dom'
+import { applyJob } from "../redux/actions/jobActions";
 
 function JobInfo() {
   const { jobs } = useSelector((state) => state.jobsReducer);
@@ -16,6 +17,12 @@ function JobInfo() {
   const alreadyApplied = appliedCandidates.find(
     (candidate) => candidate.userid === userid
   );
+
+  const dispatch = useDispatch();
+
+  function applyNow() {
+    dispatch(applyJob(job));
+  }
 
   return (
     <div>
@@ -67,7 +74,7 @@ function JobInfo() {
               ) : alreadyApplied ? (
                 <Tag color="green">Already Applied</Tag>
               ) : (
-                <Button>Apply Now</Button>
+                <Button onClick={applyNow}>Apply Now</Button>
               )}
               <p>
                 <b>Posted on</b> {moment(job.createdAt).format("MMM DD yyyy")}

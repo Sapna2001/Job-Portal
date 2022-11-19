@@ -3,21 +3,25 @@ import { Row, Col, Form, Input, Button } from "antd";
 import { loginUser } from "../redux/actions/userActions";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import AOS from 'aos';
-import 'aos/dist/aos.css'; 
-import "../stylesheets/loginRegister.css"
+import AOS from "aos";
+import "aos/dist/aos.css";
+import "../stylesheets/loginRegister.css";
 
 AOS.init();
 
 function Login() {
-    const dispatch = useDispatch()
-    function login(values){
-        dispatch(loginUser(values))
-    }
+  const dispatch = useDispatch();
+  function login(values) {
+    dispatch(loginUser(values));
+  }
   return (
     <div className="login">
       <Row justify="center" className="flex align-items-center">
-        <Col lg={5}><h1 className="heading1" data-aos='slide-left'>Job</h1></Col>
+        <Col lg={5}>
+          <h1 className="heading1" data-aos="slide-left">
+            Job
+          </h1>
+        </Col>
         <Col lg={10} sm={24} className="boxShadow p-5 login-form">
           <h3>Login</h3>
           <hr />
@@ -38,12 +42,21 @@ function Login() {
               <Input />
             </Form.Item>
 
-            <Button htmlType="submit" className='mb-3'>Login</Button><br />
+            <Button htmlType="submit" className="mb-3">
+              Login
+            </Button>
+            <br />
 
-            <Link to='/register' className='mt-3'>Not registerd? Click here to register</Link>
+            <Link to="/register" className="mt-3">
+              Click here to register
+            </Link>
           </Form>
         </Col>
-        <Col lg={5}><h1 className='heading2' data-aos='slide-right'>Portal</h1></Col>
+        <Col lg={5}>
+          <h1 className="heading2" data-aos="slide-right">
+            Portal
+          </h1>
+        </Col>
       </Row>
     </div>
   );

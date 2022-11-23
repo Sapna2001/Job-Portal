@@ -76,7 +76,7 @@ class DefaultLayout extends React.Component {
             </Menu.Item>
 
             <Menu.Item key="/posted" icon={<CheckOutlined />}>
-              <Link to="/posted">Posted</Link>
+              <Link to="/posted">Posted Jobs</Link>
             </Menu.Item>
 
             <Menu.Item key="/resume" icon={<FilePdfOutlined />}>

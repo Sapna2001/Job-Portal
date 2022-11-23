@@ -22,6 +22,7 @@ function Template3() {
           <div className="details">
             <p>{user.email}</p>
             <p>{user.mobileNumber}</p>
+            <p>{user.address}</p>
             <a href={user.portfolio}>
               <p>Portfolio</p>
             </a>

@@ -2,7 +2,7 @@ import React from "react";
 import DefaultLayout from "../Components/DefaultLayout";
 import { useSelector } from "react-redux";
 import { Table } from "antd";
-import "../stylesheets/appliedJobs.css";
+import "../Resources/stylesheets/appliedJobs.css";
 
 function AppliedJobs() {
   const { jobs } = useSelector((state) => state.jobsReducer);

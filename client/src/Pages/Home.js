@@ -4,7 +4,7 @@ import DefaultLayout from "../Components/DefaultLayout";
 import { Row, Col, Button } from "antd";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import "../stylesheets/home.css"
+import "../Resources/stylesheets/home.css"
 
 function Home() {
   const { jobs } = useSelector((state) => state.jobsReducer);

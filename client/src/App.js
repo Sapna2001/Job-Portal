@@ -13,6 +13,7 @@ import Register from "./Pages/Register";
 import Referral from "./Pages/Referral";
 import Resume from "./Pages/Resume";
 import Company from "./Pages/Company";
+import Templates from "./Pages/templates";
 import { BrowserRouter, Route, Routes, Navigate, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -47,6 +48,8 @@ function App() {
                         <Route path="/resume" element={<Resume />} />
                         <Route path="/referral" element={<Referral />} />
                         <Route path="/company" element={<Company />} />
+                        <Route path="/templates/:id" element={<Templates />}
+          />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

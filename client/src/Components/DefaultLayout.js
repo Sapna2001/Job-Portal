@@ -1,6 +1,6 @@
 import { Layout, Menu } from "antd";
 import React from "react";
-import "../stylesheets/defaultLayout.css";
+import "../Resources/stylesheets/defaultLayout.css";
 import { Link } from "react-router-dom";
 import {
   MenuUnfoldOutlined,

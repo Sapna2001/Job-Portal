@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "../stylesheets/loginRegister.css";
+import "../Resources/stylesheets/loginRegister.css";
 
 AOS.init();
 

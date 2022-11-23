@@ -15,7 +15,7 @@ function Home() {
           {jobs.map((job) => {
             return (
               <Col lg={12} sm={24}>
-                <div className="job-div box-shadow m-2 p-2">
+                <div className="job-div box-shadow m-2 p-5">
                   <h3><b>{job.title}</b></h3>
                   <p>{job.company}</p>
                   <hr />

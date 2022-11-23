@@ -13,7 +13,7 @@ import {
   LogoutOutlined,
   FilePdfOutlined,
   ShopOutlined,
-  AlertOutlined
+  AlertOutlined,
 } from "@ant-design/icons";
 
 const { Header, Sider, Content } = Layout;
@@ -32,7 +32,14 @@ class DefaultLayout extends React.Component {
     });
   };
 
+  logout = () => {
+    localStorage.removeItem("user");
+    window.location.reload();
+  };
+
   render() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    
     return (
       <Layout>
         <Sider
@@ -99,7 +106,7 @@ class DefaultLayout extends React.Component {
               zIndex: 9999,
             }}
           >
-            <div className="flex justify-content-between">
+            <div className="topBar">
               <div>
                 {React.createElement(
                   this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
@@ -117,6 +124,11 @@ class DefaultLayout extends React.Component {
                   <b></b>
                 </h5>
               </div>
+
+              <div style={{display : this.state.collapsed ? 'none' : 'inline'}}>
+                  <h3 className="name"><b>{user.firstName}</b></h3>
+             </div>
+
             </div>
           </Header>
           <Content

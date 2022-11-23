@@ -36,3 +36,13 @@
 .logo h1 {
   color: white !important;
 }
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name {
+  padding-right: 60px;
+  padding-top: 25px;
+}

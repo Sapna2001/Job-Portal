@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import DefaultLayout from "../Components/DefaultLayout";
 import { useSelector } from "react-redux";
-import { Table } from "antd";
+import { Table, Modal } from "antd";
+import {
+  EditOutlined,
+  OrderedListOutlined,
+} from "@ant-design/icons";
 import moment from "moment";
-import { EditOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 function PostedJobs() {
-  const allJobs = useSelector((state) => state.jobsReducer).jobs;
-  const userId = JSON.parse(localStorage.getItem("user"))._id;
-  const userPostedJobs = allJobs.filter((job) => job.postedBy === userId);
-  const navigate = useNavigate();;
+  const alljobs = useSelector((state) => state.jobsReducer).jobs;
+  const allusers = useSelector((state) => state.usersReducer).users;
+  const userid = JSON.parse(localStorage.getItem("user"))._id;
+  const userPostedJobs = alljobs.filter((job) => job.postedBy === userid);
+  const navigate = useNavigate();
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedJob, setSelectedJob] = useState();
 
   const columns = [
     {
@@ -35,11 +40,18 @@ function PostedJobs() {
         return (
           <div className="flex">
             <EditOutlined
-              className="mr-2"
-              style={{ fontSize: 20 }}
+            className='mr-2'
+              style={{fontSize:20}}
               onClick={() => {
-                console.log(data.completeJobData._id)
                 navigate(`/editjob/${data.completeJobData._id}`);
+                console.log("hi")
+              }}
+            />
+            <OrderedListOutlined
+               style={{fontSize:20}}
+              onClick={() => {
+                
+                showModal(job);
               }}
             />
           </div>
@@ -61,11 +73,72 @@ function PostedJobs() {
     dataSource.push(obj);
   }
 
+  const showModal = (job) => {
+    setIsModalVisible(true);
+    setSelectedJob(job);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+ function CandidatesList(){
+  const candidatesColumns = [
+    {
+      title: "Candidate Id",
+      dataIndex: "candidateId",
+      render : (text ,data)=>{
+       return <Link to={`/users/${data.candidateId}`}>{data.candidateId}</Link>
+      }
+    },
+    {
+      title: "Full Name",
+      dataIndex: "fullName",
+    },
+    { title: "Applied Date", dataIndex: "appliedDate" },
+  ];
+
+  var candidatesDatasource = [];
+
+  for (var candidate of selectedJob.appliedCandidates) {
+    var user = allusers.find((user) => user._id === candidate.userid);
+
+    var obj = {
+      candidateId: user._id,
+      fullName: user.firstName + " " + user.lastName,
+      appliedDate: candidate.appliedDate,
+    };
+
+    candidatesDatasource.push(obj);
+  }
+
+  return <Table
+  columns={candidatesColumns}
+  dataSource={candidatesDatasource}
+/>
+ }
+
   return (
     <div>
       <DefaultLayout>
         <h1>Posted Jobs</h1>
+
         <Table columns={columns} dataSource={dataSource} />
+
+        <Modal
+          title="Applied Candidates List"
+          visible={isModalVisible}
+          closable={false}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          width={800}
+        >
+          <CandidatesList/>
+        </Modal>
       </DefaultLayout>
     </div>
   );

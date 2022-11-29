@@ -117,14 +117,6 @@ class DefaultLayout extends React.Component {
                 )}
               </div>
 
-              <div
-                style={{ display: this.state.collapsed ? "none" : "inline" }}
-              >
-                <h5 className="mr-2">
-                  <b></b>
-                </h5>
-              </div>
-
               <div style={{display : this.state.collapsed ? 'none' : 'inline'}}>
                   <h3 className="name"><b>{user.firstName}</b></h3>
              </div>

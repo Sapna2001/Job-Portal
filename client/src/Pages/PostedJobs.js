@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import DefaultLayout from "../Components/DefaultLayout";
 import { useSelector } from "react-redux";
 import { Table, Modal } from "antd";
-import {
-  EditOutlined,
-  OrderedListOutlined,
-} from "@ant-design/icons";
+import { EditOutlined, OrderedListOutlined } from "@ant-design/icons";
 import moment from "moment";
 import { Link, useNavigate } from "react-router-dom";
+
 function PostedJobs() {
   const alljobs = useSelector((state) => state.jobsReducer).jobs;
   const allusers = useSelector((state) => state.usersReducer).users;
@@ -40,17 +38,16 @@ function PostedJobs() {
         return (
           <div className="flex">
             <EditOutlined
-            className='mr-2'
-              style={{fontSize:20}}
+              className="mr-2"
+              style={{ fontSize: 20 }}
               onClick={() => {
                 navigate(`/editjob/${data.completeJobData._id}`);
-                console.log("hi")
+                console.log("hi");
               }}
             />
             <OrderedListOutlined
-               style={{fontSize:20}}
+              style={{ fontSize: 20 }}
               onClick={() => {
-                
                 showModal(job);
               }}
             />
@@ -86,41 +83,42 @@ function PostedJobs() {
     setIsModalVisible(false);
   };
 
- function CandidatesList(){
-  const candidatesColumns = [
-    {
-      title: "Candidate Id",
-      dataIndex: "candidateId",
-      render : (text ,data)=>{
-       return <Link to={`/users/${data.candidateId}`}>{data.candidateId}</Link>
-      }
-    },
-    {
-      title: "Full Name",
-      dataIndex: "fullName",
-    },
-    { title: "Applied Date", dataIndex: "appliedDate" },
-  ];
+  function CandidatesList() {
+    const candidatesColumns = [
+      {
+        title: "Candidate Id",
+        dataIndex: "candidateId",
+        render: (text, data) => {
+          return (
+            <Link to={`/users/${data.candidateId}`}>{data.candidateId}</Link>
+          );
+        },
+      },
+      {
+        title: "Full Name",
+        dataIndex: "fullName",
+      },
+      { title: "Applied Date", dataIndex: "appliedDate" },
+    ];
 
-  var candidatesDatasource = [];
+    var candidatesDatasource = [];
 
-  for (var candidate of selectedJob.appliedCandidates) {
-    var user = allusers.find((user) => user._id === candidate.userid);
+    for (var candidate of selectedJob.appliedCandidates) {
+      var user = allusers.find((user) => user._id === candidate.userid);
 
-    var obj = {
-      candidateId: user._id,
-      fullName: user.firstName + " " + user.lastName,
-      appliedDate: candidate.appliedDate,
-    };
+      var obj = {
+        candidateId: user._id,
+        fullName: user.firstName + " " + user.lastName,
+        appliedDate: candidate.appliedDate,
+      };
 
-    candidatesDatasource.push(obj);
+      candidatesDatasource.push(obj);
+    }
+
+    return (
+      <Table columns={candidatesColumns} dataSource={candidatesDatasource} />
+    );
   }
-
-  return <Table
-  columns={candidatesColumns}
-  dataSource={candidatesDatasource}
-/>
- }
 
   return (
     <div>
@@ -137,7 +135,7 @@ function PostedJobs() {
           onCancel={handleCancel}
           width={800}
         >
-          <CandidatesList/>
+          <CandidatesList />
         </Modal>
       </DefaultLayout>
     </div>

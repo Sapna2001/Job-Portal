@@ -14,7 +14,6 @@ function Register() {
     if (values.password !== values.confirmPassword) {
       message.error("passwords not matched");
     } else {
-      console.log(values);
       dispatch(registerUser(values));
     }
   }

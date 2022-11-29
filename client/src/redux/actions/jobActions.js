@@ -82,7 +82,7 @@ export const searchJobs = (searchKey) => async (dispatch) => {
     dispatch({ type: "LOADING", payload: false });
   }
 };
-
+ 
 export const sortJobs = (values) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
   try {

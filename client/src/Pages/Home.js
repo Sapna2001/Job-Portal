@@ -8,6 +8,7 @@ import "../Resources/stylesheets/home.css"
 
 function Home() {
   const { jobs } = useSelector((state) => state.jobsReducer);
+  
   return (
     <div>
       <DefaultLayout>

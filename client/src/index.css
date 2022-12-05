@@ -5,4 +5,9 @@
     width: 100% !important;
     z-index: 9999;
   }
+
+  .filter {
+    display: flex;
+    flex-direction: row;
+  }
   

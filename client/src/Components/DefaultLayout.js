@@ -15,6 +15,7 @@ import {
   ShopOutlined,
   AlertOutlined,
 } from "@ant-design/icons";
+import Filter from './Filter';
 
 const { Header, Sider, Content } = Layout;
 
@@ -116,6 +117,10 @@ class DefaultLayout extends React.Component {
                   }
                 )}
               </div>
+
+              <div>
+                <Filter/>
+             </div>
 
               <div style={{display : this.state.collapsed ? 'none' : 'inline'}}>
                   <h3 className="name"><b>{user.firstName}</b></h3>

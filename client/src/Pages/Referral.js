@@ -1,37 +1,29 @@
-import React from 'react'
+import React, {useState} from 'react'
 import DefaultLayout from '../Components/DefaultLayout';
-import { Row, Col, Form, Tabs, Input, Button } from "antd";
+import { Row, Col, Form, Input, Button } from "antd";
 import { useDispatch } from "react-redux";
+
 import { updateUser } from "../redux/actions/userActions";
-import {useState} from "react";
 
 const { TextArea } = Input;
+
+
 
 function Referral() {
   const [personalInfo, setPersonalInfo] = useState();
   const dispatch = useDispatch();
 
-  function onPersonInfoSubmit(values) {
-    setPersonalInfo(values);
-  }
+
 
   function onFinalFinish(values) {
     const finalObj = { ...personalInfo, ...values };
     dispatch(updateUser(finalObj))
   }
   
-  const user = JSON.parse(localStorage.getItem("user"));
-
   return (
     <div>
       <DefaultLayout>
-      <Tabs
-          defaultActiveKey="1"
-          items={[
-            {
-              label: `Employee's Info`,
-              key: "1",
-              children: (
+        <h1>Employee's Info</h1>
                 <Form layout="vertical" onFinish={onFinalFinish}>
               <Row gutter={16}>
                 <Col lg={8} sm={24}>
@@ -99,79 +91,39 @@ function Referral() {
                   </Form.Item>
                 </Col>
               </Row>
-
               <Button htmlType="submit">Save</Button>
+    
+              <Row gutter={16}>     
+        <h1>How to apply?</h1>
+        </Row>
+        <Row gutter={16}> 
+        <Col lg={6} sm={16}>
+            Amazon Software Developer
+              <tr>
+              <td><a href={"https://www.amazon.jobs/en/job_categories/software-development"}>Click here to apply</a></td>
+            </tr>
+  
+                </Col>  
+                <Col lg={6} sm={16}>
+            Google Software Engineer
+              <tr>
+              <td><a href={"https://careers.google.com/jobs/results/?distance=50&q=Software%20Engineer"}>Click here to apply</a></td>
+            </tr>
+  
+                </Col>  
+
+                <Col lg={6} sm={16}>
+            Intel Product Designer
+              <tr>
+              <td><a href={"https://jobs.intel.com/en/job/petah-tikva/experienced-product-designer-ui-ux/41147/40919719136"}>Click here to apply</a></td>
+            </tr>
+  
+                </Col>
+              </Row>       
             </Form>
-              ),
-            },
-            {
-              label: `Candidate Info`,
-              key: "2",
-              children: (
-                <Form layout='vertical' onFinish={onFinalFinish}>
-                <Row gutter={16}>
-                  <Col lg={8} sm={24}>
-                    <Form.Item
-                      name="candidatefirst"
-                      label="First Name"
-                      rules={[{ required: true }]}
-                    >
-                      <Input />
-                    </Form.Item>
-                    </Col>
-                    <Col lg={8} sm={24}>
-                    <Form.Item
-                      name="candidatelast"
-                      label="Last Name"
-                      rules={[{ required: true }]}
-                    >
-                      <Input />
-                    </Form.Item>
-                    </Col>
-
-                    <Col lg={8} sm={24}>
-                    <Form.Item
-                      name="mobile"
-                      label="Mobile Number"
-                      rules={[{ required: true }]}
-                    >
-                      <Input />
-                    </Form.Item>
-                    </Col>
-                    </Row>
-
-                    
-                    <Row gutter={16}>
-                <Col lg={8} sm={24}>
-                  <Form.Item
-                    name="email"
-                    rules={[{ required: true }]}
-                    label="Email ID"
-                  >
-                    <Input />
-                  </Form.Item>
-                </Col>
-
-                <Col lg={8} sm={24}>
-                  <Form.Item
-                    name="job"
-                    rules={[{ required: true }]}
-                    label="Job Position"
-                  >
-                    <Input />
-                  </Form.Item>
-                </Col>
-                </Row>
-                <Button htmlType="submit">Submit</Button>
-              </Form> 
-              ),
-            },
-          ]}
-          />
         </DefaultLayout>
       </div>
     );
   }
-
 
 export default Referral;

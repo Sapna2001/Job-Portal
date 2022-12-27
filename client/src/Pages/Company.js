@@ -8,6 +8,7 @@ function Company() {
   const user = JSON.parse(localStorage.getItem("user"));
   const dispatch = useDispatch();
   const { companyReviews } = useSelector((state) => state.companyReducer);
+  const userid = user._id;
 
   function onSubmit(values) {
     dispatch(updateCompanyReview(values));
@@ -100,10 +101,18 @@ function Company() {
                               <b>{companyReview.companyName}</b>
                             </h3>
                             <hr />
-                            <p><b>Role:</b> {companyReview.role}</p>
-                            <p><b>Salary:</b> {companyReview.salary}</p>
-                            <p><b>Rating(out of 5):</b> {companyReview.rating}</p>
-                            <p><b>Review:</b>  {companyReview.companyReview}</p>
+                            <p>
+                              <b>Role:</b> {companyReview.role}
+                            </p>
+                            <p>
+                              <b>Salary:</b> {companyReview.salary}
+                            </p>
+                            <p>
+                              <b>Rating(out of 5):</b> {companyReview.rating}
+                            </p>
+                            <p>
+                              <b>Review:</b> {companyReview.companyReview}
+                            </p>
                           </div>
                         </Col>
                       );

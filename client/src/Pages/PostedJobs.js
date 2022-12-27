@@ -38,7 +38,7 @@ function PostedJobs() {
         return (
           <div className="flex">
             <EditOutlined
-              className="mr-2"
+              className="m-2"
               style={{ fontSize: 20 }}
               onClick={() => {
                 navigate(`/editjob/${data.completeJobData._id}`);

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../Components/DefaultLayout";
 import { Row, Col, Form, Tabs, Input, Button } from "antd";
 import { updateCompanyReview } from "../redux/actions/companyActions";
+import { Link } from "react-router-dom";
 
 function Company() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -113,6 +114,7 @@ function Company() {
                             <p>
                               <b>Review:</b> {companyReview.companyReview}
                             </p>
+                            <div className="flex justify-content-between"></div>
                           </div>
                         </Col>
                       );

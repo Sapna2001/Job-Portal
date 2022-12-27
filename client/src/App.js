@@ -20,12 +20,14 @@ import { useEffect } from "react";
 import { getAllJobs } from "./redux/actions/jobActions";
 import RingLoader from "react-spinners/RingLoader";
 import { getAllUsers } from "./redux/actions/userActions";
+import { getAllCompanyReviews } from "./redux/actions/companyActions"
 
 function App() {
   const { loader } = useSelector((state) => state.loaderReducer);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllJobs());
+    dispatch(getAllCompanyReviews())
     dispatch(getAllUsers());
   }, []);
   return (

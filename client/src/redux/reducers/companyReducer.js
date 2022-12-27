@@ -1,13 +1,13 @@
 const initialState = {
-    jobs: [],
+    companyReviews: [],
   };
   
-  export const jobsReducer = (state = initialState, action) => {
+  export const companyReducer = (state = initialState, action) => {
     switch (action.type) {
       case "GET_ALL_COMPANY_REVIEW":
         return {
           ...state,
-          jobs: action.payload,
+          companyReviews: action.payload,
         };
       default:
         return state;

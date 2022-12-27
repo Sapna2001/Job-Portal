@@ -7,8 +7,10 @@ const port = process.env.PORT || 5000;
 const path = require("path");
 const jobsRoute = require("./routes/jobsRoute");
 const userRoute = require('./routes/userRoute')
+const companyRoute = require('./routes/companyRoute')
 
 app.use('/api/jobs/' , jobsRoute)
+app.use('/api/company/' , companyRoute)
 app.use('/api/users/' , userRoute)
 
 if (process.env.NODE_ENV === "production") {

@@ -29,7 +29,6 @@ router.post("/editjob", async (req, res) => {
       { _id: new ObjectId(req.body._id) },
       req.body
     );
-    console.log(req.body);
     res.send("Job Updated Successfully");
   } catch (error) {
     return res.status(400).json({ error });

@@ -22,4 +22,13 @@ router.post("/postcompanyreview", async (req, res) => {
   }
 });
 
+router.post("/editcompanyreview", async (req, res) => {
+  try {
+    await Company.findOneAndUpdate({ _id: req.body._id }, req.body);
+    res.send("Company Review Updated Successfully");
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
+
 module.exports = router;

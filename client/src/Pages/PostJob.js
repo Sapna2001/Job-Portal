@@ -9,6 +9,7 @@ const { TextArea } = Input;
 function PostJob() {
   const [jobInfo, setJobInfo] = useState({});
   const dispatch = useDispatch()
+  
   function onFirstFormFinish(values) {
     setJobInfo(values);
     message.info('Saved');

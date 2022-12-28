@@ -42,7 +42,6 @@ function PostedJobs() {
               style={{ fontSize: 20 }}
               onClick={() => {
                 navigate(`/editjob/${data.completeJobData._id}`);
-                console.log("hi");
               }}
             />
             <OrderedListOutlined

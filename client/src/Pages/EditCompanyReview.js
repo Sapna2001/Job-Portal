@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../Components/DefaultLayout";
 import { Row, Col, Form, Tabs, Input, Button } from "antd";
-import { updateCompanyReview } from "../redux/actions/companyActions";
-import { Link } from "react-router-dom";
+import { editCompanyReview } from "../redux/actions/companyActions";
+import { Link, useParams } from "react-router-dom";
 
-function Company() {
+function EditCompanyReview() {
   const user = JSON.parse(localStorage.getItem("user"));
   const dispatch = useDispatch();
   const { companyReviews } = useSelector((state) => state.companyReducer);
   const userid = user._id;
+  const { id } = useParams()
+  const companyreview = companyReviews.find((companyreview) => companyreview._id === id);
 
   function onSubmit(values) {
-    dispatch(updateCompanyReview(values));
+    values._id = companyreview._id;
+    dispatch(editCompanyReview (values));
   }
 
   return (
@@ -29,7 +32,7 @@ function Company() {
                   <Form
                     layout="vertical"
                     onFinish={onSubmit}
-                    initialValues={user}
+                    initialValues={companyreview}
                   >
                     <Row gutter={16}>
                       <Col lg={6} sm={24}>
@@ -138,4 +141,4 @@ function Company() {
   );
 }
 
-export default Company;
+export default EditCompanyReview;

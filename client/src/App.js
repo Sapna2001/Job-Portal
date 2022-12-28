@@ -13,6 +13,7 @@ import Register from "./Pages/Register";
 import Referral from "./Pages/Referral";
 import Resume from "./Pages/Resume";
 import Company from "./Pages/Company";
+import EditCompanyReview from "./Pages/EditCompanyReview"
 import Templates from "./Pages/templates";
 import { BrowserRouter, Route, Routes, Navigate, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -48,6 +49,7 @@ function App() {
                         <Route path="/jobs/:id" element={<JobInfo />} />
                         <Route path="/posted" element={<PostedJobs />} />
                         <Route path="/editjob/:id" element={<EditJob />} />
+                        <Route path="/editcompanyreview/:id" element={<EditCompanyReview />} />
                         <Route path="/users/:id" element={<UserInfo />} />
                         <Route path="/resume" element={<Resume />} />
                         <Route path="/referral" element={<Referral />} />

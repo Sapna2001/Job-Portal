@@ -26,7 +26,7 @@ export const postJob = (values) => async (dispatch) => {
     }, 1000);
   } catch (error) {
     console.log(error);
-    dispatch({ type: "LOADING", payload: false });
+    dispatch({ type: "LOADING", payload: false }); 
   }
 };
 

@@ -1,31 +1,36 @@
-import React, {useState} from 'react'
-import DefaultLayout from '../Components/DefaultLayout';
-import { Row, Col, Form, Input, Button } from "antd";
-import { useDispatch } from "react-redux";
-
-import { updateUser } from "../redux/actions/userActions";
-
-const { TextArea } = Input;
-
-
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import DefaultLayout from "../Components/DefaultLayout";
+import { Row, Col, Form, Tabs, Input, Button } from "antd";
+import { updateReferrals } from "../redux/actions/referralActions"; 
 
 function Referral() {
-  const [personalInfo, setPersonalInfo] = useState();
+  const user = JSON.parse(localStorage.getItem("user"));
   const dispatch = useDispatch();
+  const { referrals } = useSelector((state) => state.referralReducer);
+  const userid = user._id;
 
-
-
-  function onFinalFinish(values) {
-    const finalObj = { ...personalInfo, ...values };
-    dispatch(updateUser(finalObj))
+  function onSubmit(values) {
+    dispatch(updateReferrals(values));
   }
-  
+
   return (
     <div>
       <DefaultLayout>
-        <h1>Employee's Info</h1>
-                <Form layout="vertical" onFinish={onFinalFinish}>
-              <Row gutter={16}>
+        {
+          <Tabs
+            defaultActiveKey="1"
+            items={[
+              {
+                label: `Employee's Info`,
+                key: "1",
+                children: (
+                  <Form
+                    layout="vertical"
+                    onFinish={onSubmit}
+                    initialValues={user}
+                  >
+                    <Row gutter={16}>
                 <Col lg={8} sm={24}>
                   <Form.Item
                     name="employeefirst"
@@ -91,9 +96,8 @@ function Referral() {
                   </Form.Item>
                 </Col>
               </Row>
-              <Button htmlType="submit">Save</Button>
-    
-              <Row gutter={16}>     
+                    <Button htmlType="submit">Post</Button>
+                    <Row gutter={16}>     
         <h1>How to apply?</h1>
         </Row>
         <Row gutter={16}> 
@@ -121,9 +125,48 @@ function Referral() {
                 </Col>
               </Row>       
             </Form>
-        </DefaultLayout>
-      </div>
-    );
-  }
+                ),
+              },
+              {
+                label: `View Employee's Info`,
+                key: "2",
+                children: (
+                  <Row gutter={16}>
+                    {referrals.map((referrals) => {
+                      return (
+                        <Col lg={12} sm={24}>
+                          <div className="job-div box-shadow m-3 p-7">
+                          <p>
+                              <b>First Name:</b> {referrals.employeefirst}
+                            </p>
+                            <p>
+                              <b>Last Name:</b> {referrals.employeelast}
+                            </p>
+                            <p>
+                              <b>Mobile Number:</b> {referrals.mobile}
+                            </p>
+                            <p>
+                              <b>Email ID:</b> {referrals.email}
+                            </p>
+                            <p>
+                              <b>Company Name:</b> {referrals.company}
+                            </p>
+                            <p>
+                              <b>Job Description:</b> {referral.description}
+                            </p>
+                          </div>
+                        </Col>
+                      );
+                    })}
+                  </Row>
+                ),
+              },
+            ]}
+          />
+        }
+      </DefaultLayout>
+    </div>
+  );
+}
 
 export default Referral;

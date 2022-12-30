@@ -8,6 +8,12 @@ const path = require("path");
 const jobsRoute = require("./routes/jobsRoute");
 const userRoute = require('./routes/userRoute')
 const companyRoute = require('./routes/companyRoute')
+const referralRoute = require('./routes/referralRoute')
+
+app.use('/api/jobs/' , jobsRoute)
+app.use('/api/company/' , companyRoute)
+app.use('/api/referral/' , referralRoute)
+
 
 app.use('/api/jobs/' , jobsRoute)
 app.use('/api/company/' , companyRoute)

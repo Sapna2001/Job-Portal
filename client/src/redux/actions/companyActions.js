@@ -13,7 +13,7 @@ export const getAllCompanyReviews = () => async (dispatch) => {
   }
 };
 
-export const updateCompanyReview = (values) => async (dispatch) => {
+export const postCompanyReview = (values) => async (dispatch) => {
   values.postedBy = JSON.parse(localStorage.getItem("user"))._id;
   dispatch({ type: "LOADING", payload: true });
   try {

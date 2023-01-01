@@ -132,24 +132,24 @@ function Referral() {
                 key: "2",
                 children: (
                   <Row gutter={16}>
-                    {referrals.map((referrals) => {
+                    {referrals.map((referral) => {
                       return (
                         <Col lg={12} sm={24}>
                           <div className="job-div box-shadow m-3 p-7">
                           <p>
-                              <b>First Name:</b> {referrals.employeefirst}
+                              <b>First Name:</b> {referral.employeefirst}
                             </p>
                             <p>
-                              <b>Last Name:</b> {referrals.employeelast}
+                              <b>Last Name:</b> {referral.employeelast}
                             </p>
                             <p>
-                              <b>Mobile Number:</b> {referrals.mobile}
+                              <b>Mobile Number:</b> {referral.mobile}
                             </p>
                             <p>
-                              <b>Email ID:</b> {referrals.email}
+                              <b>Email ID:</b> {referral.email}
                             </p>
                             <p>
-                              <b>Company Name:</b> {referrals.company}
+                              <b>Company Name:</b> {referral.company}
                             </p>
                             <p>
                               <b>Job Description:</b> {referral.description}

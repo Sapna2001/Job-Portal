@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../Components/DefaultLayout";
 import { Row, Col, Form, Tabs, Input, Button } from "antd";
-import { updateCompanyReview } from "../redux/actions/companyActions";
+import { postCompanyReview } from "../redux/actions/companyActions";
 import { Link } from "react-router-dom";
 
 function Company() {
@@ -12,7 +12,7 @@ function Company() {
   const userid = user._id;
 
   function onSubmit(values) {
-    dispatch(updateCompanyReview(values));
+    dispatch(postCompanyReview(values));
   }
 
   return (

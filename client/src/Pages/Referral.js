@@ -152,7 +152,7 @@ function Referral() {
                               <b>Company Name:</b> {referrals.company}
                             </p>
                             <p>
-                              <b>Job Description:</b> {referral.description}
+                              <b>Job Description:</b> {referrals.description}
                             </p>
                           </div>
                         </Col>

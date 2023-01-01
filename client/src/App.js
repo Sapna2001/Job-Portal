@@ -21,12 +21,9 @@ import { useEffect } from "react";
 import { getAllJobs } from "./redux/actions/jobActions";
 import RingLoader from "react-spinners/RingLoader";
 import { getAllUsers } from "./redux/actions/userActions";
-<<<<<<< HEAD
 import { getAllCompanyReviews } from "./redux/actions/companyActions";
 import { getAllReferrals } from "./redux/actions/referralActions"
-=======
-import { getAllCompanyReviews } from "./redux/actions/companyActions"
->>>>>>> cfebad6e9b8e5956da84076c701b9ce5b4f9acd9
+
 
 function App() {
   const { loader } = useSelector((state) => state.loaderReducer);
@@ -34,10 +31,7 @@ function App() {
   useEffect(() => {
     dispatch(getAllJobs());
     dispatch(getAllCompanyReviews())
-<<<<<<< HEAD
     dispatch(getAllReferrals)
-=======
->>>>>>> cfebad6e9b8e5956da84076c701b9ce5b4f9acd9
     dispatch(getAllUsers());
   }, []);
   return (

@@ -28,10 +28,10 @@ export const postReferrals = (values) => async (dispatch) => {
   }
 };
 
-export const editReferrals = (values) => async (dispatch) => {
+export const editReferral = (values) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
   try {
-    const response = await axios.post("/api/referral/editreferrals", values);
+    const response = await axios.post("/api/referral/editreferral", values);
     dispatch({ type: "LOADING", payload: false });
     message.success("Referral Post Edited Successfully");
     

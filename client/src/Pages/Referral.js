@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../Components/DefaultLayout";
 import { Row, Col, Form, Tabs, Input, Button } from "antd";
-import { updateReferrals } from "../redux/actions/referralActions"; 
+import { postReferrals } from "../redux/actions/referralActions"; 
 
 function Referral() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -11,7 +11,7 @@ function Referral() {
   const userid = user._id;
 
   function onSubmit(values) {
-    dispatch(updateReferrals(values));
+    dispatch(postReferrals(values));
   }
 
   return (

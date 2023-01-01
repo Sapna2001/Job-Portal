@@ -13,7 +13,7 @@ export const getAllReferrals = () => async (dispatch) => {
   }
 };
 
-export const updateReferrals = (values) => async (dispatch) => {
+export const postReferrals = (values) => async (dispatch) => {
   values.postedBy = JSON.parse(localStorage.getItem("user"))._id;
   dispatch({ type: "LOADING", payload: true });
   try {

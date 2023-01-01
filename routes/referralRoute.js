@@ -11,11 +11,11 @@ router.get("/getallreferrals", async (req, res) => {
   }
 });
 
-router.post("/postreferrals", async (req, res) => {
+router.post("/postreferral", async (req, res) => {
   try {
     const newreferral = new Referral(req.body);
     await newreferral.save();
-    res.send("Employee Registered Successfully");
+    res.send("Referral Post Added Successfully");
   } catch (error) {
     console.log(error.message)
     return res.status(400).json({ error });
@@ -25,7 +25,7 @@ router.post("/postreferrals", async (req, res) => {
 router.post("/editreferral", async (req, res) => {
   try {
     await Referral.findOneAndUpdate({ _id: req.body._id }, req.body);
-    res.send("Employee's Info Updated Successfully");
+    res.send("Referral Post Edited Successfully");
   } catch (error) {
     return res.status(400).json({ error });
   }

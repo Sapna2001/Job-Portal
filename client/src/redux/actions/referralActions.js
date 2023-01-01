@@ -4,7 +4,7 @@ import { message } from "antd";
 export const getAllReferrals = () => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
   try {
-    const response = await axios.get("/api/referral/getallreferral");
+    const response = await axios.get("/api/referral/getallreferrals");
     dispatch({ type: "GET_ALL_REFERRALS", payload: response.data });
     dispatch({ type: "LOADING", payload: false });
   } catch (error) {
@@ -17,9 +17,9 @@ export const postReferrals = (values) => async (dispatch) => {
   values.postedBy = JSON.parse(localStorage.getItem("user"))._id;
   dispatch({ type: "LOADING", payload: true });
   try {
-    const response = await axios.post("/api/referral/postreferrals", values);
+    const response = await axios.post("/api/referral/postreferral", values);
     dispatch({ type: "LOADING", payload: false });
-    message.success("Employee Registered Successfully");
+    message.success("Referral Post Added Successfully");
     setTimeout(() => {
       window.location.href = "/";
     }, 1000);
@@ -33,7 +33,7 @@ export const editReferrals = (values) => async (dispatch) => {
   try {
     const response = await axios.post("/api/referral/editreferrals", values);
     dispatch({ type: "LOADING", payload: false });
-    message.success("Employee Info Updated Successfully");
+    message.success("Referral Post Edited Successfully");
     
     setTimeout(() => {
       window.location.href = "/";

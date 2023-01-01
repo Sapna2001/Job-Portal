@@ -30,7 +30,7 @@ function App() {
   useEffect(() => {
     dispatch(getAllJobs());
     dispatch(getAllCompanyReviews())
-    dispatch(getAllReferrals)
+    dispatch(getAllReferrals())
     dispatch(getAllUsers());
   }, []);
   return (

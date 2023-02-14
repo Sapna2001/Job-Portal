@@ -3,7 +3,7 @@ Nowadays, we know that searching for jobs is so difficult in various areas like 
 
 The job portal is a MERN stack application dedicated to online information about recruiting companies as well as job seekers.
 
-## Task to be accomplished
+## Features
 1. Recruiters will be able to post job descriptions on the portal and find a suitable candidate from the list.
 2. Job seekers will be able to apply for the jobs posted by the recruiters.
 3. An ATS(applicant tracking system) compatible resume will be provided to the job seekers in various templates.

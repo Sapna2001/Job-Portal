@@ -19,5 +19,4 @@ The job portal is a MERN stack application dedicated to online information about
 
 ## Team Members
 1. Abhinand Sankar J     
-2. Aswin Prasobh
-3. Hari Sapna Nair
+2. Hari Sapna Nair
